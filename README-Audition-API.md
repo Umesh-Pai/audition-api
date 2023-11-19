@@ -35,6 +35,10 @@ OpenAPI Specification can be accessed using the URL http://server:port/context-p
 - Add unit tests for negative scenarios
 - Add tests for the controller class using WebMvcTest
 
+## Pagination
+Pagination has been implemented for /posts endpoint. To retrieve a specific set of values we can pass the page number and size.
+/posts?page=2&size=5
+
 
 
 
