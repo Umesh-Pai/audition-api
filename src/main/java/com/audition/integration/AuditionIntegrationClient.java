@@ -43,7 +43,7 @@ public class AuditionIntegrationClient {
 
     @CircuitBreaker(name = RESILIENCE_INSTANCE_NAME)
     @Retry(name = RESILIENCE_INSTANCE_NAME)
-    public AuditionPost getPostById(final String id) {
+    public AuditionPost getPostById(final Integer id) {
         // TODO get post by post ID call from https://jsonplaceholder.typicode.com/posts/
         try {
             final ResponseEntity<AuditionPost> response = restTemplate.exchange(
@@ -64,7 +64,7 @@ public class AuditionIntegrationClient {
 
     @CircuitBreaker(name = RESILIENCE_INSTANCE_NAME)
     @Retry(name = RESILIENCE_INSTANCE_NAME)
-    public List<Comment> getComments(final String postId) {
+    public List<Comment> getComments(final Integer postId) {
 
         // TODO Write a method GET comments for a post from https://jsonplaceholder.typicode.com/posts/{postId}/comments - the comments must be returned as part of the post.
         try {

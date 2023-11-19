@@ -52,8 +52,8 @@ class AuditionControllerTest {
     @Test
     void testGetPostByIdSuccess() {
 
-        when(service.getPostById("1")).thenReturn(populatePost());
-        final AuditionPost post = controller.getPostById("1");
+        when(service.getPostById(1)).thenReturn(populatePost());
+        final AuditionPost post = controller.getPostById(1);
 
         assertNotNull(post);
         assertEquals(10, post.getId());
@@ -65,8 +65,8 @@ class AuditionControllerTest {
     @Test
     void testGetCommentsWithPostSuccess() {
 
-        when(service.getCommentsWithPost("1")).thenReturn(populatePost());
-        final AuditionPost post = controller.getCommentsWithPost("1");
+        when(service.getCommentsWithPost(1)).thenReturn(populatePost());
+        final AuditionPost post = controller.getCommentsWithPost(1);
 
         assertNotNull(post);
         assertEquals(10, post.getId());
@@ -85,8 +85,8 @@ class AuditionControllerTest {
     @Test
     void testGetCommentsSuccess() {
 
-        when(service.getComments("1")).thenReturn(populateComments());
-        final List<Comment> comments = controller.getComments("1");
+        when(service.getComments(1)).thenReturn(populateComments());
+        final List<Comment> comments = controller.getComments(1);
 
         assertNotNull(comments);
         assertNotNull(comments.get(0));

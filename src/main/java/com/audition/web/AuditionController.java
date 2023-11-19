@@ -1,8 +1,5 @@
 package com.audition.web;
 
-import static org.springframework.web.util.HtmlUtils.htmlEscape;
-
-import com.audition.common.logging.AuditionLogger;
 import com.audition.model.AuditionPost;
 import com.audition.model.Comment;
 import com.audition.service.AuditionService;
@@ -45,26 +42,21 @@ public class AuditionController {
     }
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody AuditionPost getPostById(@PathVariable("id") final String postId) {
-        final String sanitizedPostId = htmlEscape(postId);
+    public @ResponseBody AuditionPost getPostById(@PathVariable("id") final Integer postId) {
         log.info("Request received for posts API with postId : {}", postId);
-        return auditionService.getPostById(sanitizedPostId);
+        return auditionService.getPostById(postId);
     }
 
     @RequestMapping(value = "/posts/{id}/comments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody AuditionPost getCommentsWithPost(@PathVariable("id") final String postId) {
-
-        final String sanitizedPostId = htmlEscape(postId);
-        log.info("Request received for comments API with postId : {}", sanitizedPostId);
-        return auditionService.getCommentsWithPost(sanitizedPostId);
+    public @ResponseBody AuditionPost getCommentsWithPost(@PathVariable("id") final Integer postId) {
+        log.info("Request received for comments API with postId : {}", postId);
+        return auditionService.getCommentsWithPost(postId);
     }
 
     @RequestMapping(value = "/comments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Comment> getComments(@RequestParam("postId") final String postId) {
-
-        final String sanitizedPostId = htmlEscape(postId);
-        log.info("Request received for comments API with postId : {}", sanitizedPostId);
-        return auditionService.getComments(sanitizedPostId);
+    public @ResponseBody List<Comment> getComments(@RequestParam("postId") final Integer postId) {
+        log.info("Request received for comments API with postId : {}", postId);
+        return auditionService.getComments(postId);
     }
 
 }

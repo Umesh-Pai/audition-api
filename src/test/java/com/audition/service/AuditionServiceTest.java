@@ -50,9 +50,9 @@ class AuditionServiceTest {
 
     @Test
     void testGetPostByIdSuccess() {
-        when(auditionIntegrationClient.getPostById("1")).thenReturn(populatePost());
+        when(auditionIntegrationClient.getPostById(1)).thenReturn(populatePost());
 
-        final AuditionPost post = service.getPostById("1");
+        final AuditionPost post = service.getPostById(1);
 
         assertNotNull(post);
         assertEquals(10, post.getId());
@@ -64,10 +64,10 @@ class AuditionServiceTest {
     @Test
     void testGetCommentsWithPostSuccess() {
 
-        when(auditionIntegrationClient.getPostById("1")).thenReturn(populatePost());
-        when(auditionIntegrationClient.getComments("1")).thenReturn(populateComments());
+        when(auditionIntegrationClient.getPostById(1)).thenReturn(populatePost());
+        when(auditionIntegrationClient.getComments(1)).thenReturn(populateComments());
 
-        final AuditionPost post = service.getCommentsWithPost("1");
+        final AuditionPost post = service.getCommentsWithPost(1);
 
         assertNotNull(post);
         assertEquals(10, post.getId());
@@ -85,8 +85,8 @@ class AuditionServiceTest {
 
     @Test
     void testGetCommentsSuccess() {
-        when(auditionIntegrationClient.getComments("1")).thenReturn(populateComments());
-        final List<Comment> comments = service.getComments("1");
+        when(auditionIntegrationClient.getComments(1)).thenReturn(populateComments());
+        final List<Comment> comments = service.getComments(1);
 
         assertNotNull(comments);
         assertNotNull(comments.get(0));

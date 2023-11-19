@@ -74,7 +74,7 @@ class AuditionIntegrationClientTest {
         this.server.expect(requestTo("https://jsonplaceholder.typicode.com/posts/10"))
             .andRespond(withSuccess(postJson, MediaType.APPLICATION_JSON));
 
-        final AuditionPost auditionPostResponse = integrationClient.getPostById("10");
+        final AuditionPost auditionPostResponse = integrationClient.getPostById(10);
 
         assertNotNull(auditionPostResponse);
         assertEquals(10, auditionPostResponse.getId());
@@ -92,7 +92,7 @@ class AuditionIntegrationClientTest {
         this.server.expect(requestTo("https://jsonplaceholder.typicode.com/posts/1/comments"))
             .andRespond(withSuccess(commentsJson, MediaType.APPLICATION_JSON));
 
-        final List<Comment> commentsResponse = integrationClient.getComments("1");
+        final List<Comment> commentsResponse = integrationClient.getComments(1);
 
         assertNotNull(commentsResponse);
         assertNotNull(commentsResponse.get(0));

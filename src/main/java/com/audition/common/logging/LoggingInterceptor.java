@@ -6,9 +6,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -19,11 +16,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @SuppressWarnings({"PMD.GuardLogStatement", "PMD.BeanMembersShouldSerialize"})
 public class LoggingInterceptor implements ClientHttpRequestInterceptor {
-
-    @Autowired
-    private AuditionLogger logger;
-
-    private static final Logger LOG = LoggerFactory.getLogger(LoggingInterceptor.class);
 
     @Override
     public ClientHttpResponse intercept(

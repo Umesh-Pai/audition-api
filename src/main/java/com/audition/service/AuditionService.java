@@ -18,18 +18,18 @@ public class AuditionService {
         return auditionIntegrationClient.getPosts();
     }
 
-    public AuditionPost getPostById(final String postId) {
+    public AuditionPost getPostById(final Integer postId) {
         return auditionIntegrationClient.getPostById(postId);
     }
 
-    public AuditionPost getCommentsWithPost(final String postId) {
+    public AuditionPost getCommentsWithPost(final Integer postId) {
         final AuditionPost post = auditionIntegrationClient.getPostById(postId);
         final List<Comment> comments = auditionIntegrationClient.getComments(postId);
         post.setComments(comments);
         return post;
     }
 
-    public List<Comment> getComments(final String postId) {
+    public List<Comment> getComments(final Integer postId) {
         return auditionIntegrationClient.getComments(postId);
     }
 }
