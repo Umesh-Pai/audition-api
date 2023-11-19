@@ -2,10 +2,12 @@ package com.audition.web;
 
 import static org.springframework.web.util.HtmlUtils.htmlEscape;
 
+import com.audition.common.logging.AuditionLogger;
 import com.audition.model.AuditionPost;
 import com.audition.model.Comment;
 import com.audition.service.AuditionService;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Slf4j
 @SuppressWarnings({"PMD.BeanMembersShouldSerialize"})
 public class AuditionController {
 
@@ -28,6 +31,8 @@ public class AuditionController {
     @RequestMapping(value = "/posts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Page<AuditionPost> getPosts(@RequestParam(defaultValue = "0") final int page,
         @RequestParam(defaultValue = "10") final int size) {
+
+        log.info("Request received for posts API");
 
         final List<AuditionPost> posts = auditionService.getPosts();
         final int totalSize = posts.size();
@@ -42,6 +47,7 @@ public class AuditionController {
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody AuditionPost getPostById(@PathVariable("id") final String postId) {
         final String sanitizedPostId = htmlEscape(postId);
+        log.info("Request received for posts API with postId : {}", postId);
         return auditionService.getPostById(sanitizedPostId);
     }
 
@@ -49,6 +55,7 @@ public class AuditionController {
     public @ResponseBody AuditionPost getCommentsWithPost(@PathVariable("id") final String postId) {
 
         final String sanitizedPostId = htmlEscape(postId);
+        log.info("Request received for comments API with postId : {}", sanitizedPostId);
         return auditionService.getCommentsWithPost(sanitizedPostId);
     }
 
@@ -56,6 +63,7 @@ public class AuditionController {
     public @ResponseBody List<Comment> getComments(@RequestParam("postId") final String postId) {
 
         final String sanitizedPostId = htmlEscape(postId);
+        log.info("Request received for comments API with postId : {}", sanitizedPostId);
         return auditionService.getComments(sanitizedPostId);
     }
 

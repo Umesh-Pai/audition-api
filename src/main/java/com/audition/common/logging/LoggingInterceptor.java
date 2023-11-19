@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 @SuppressWarnings({"PMD.GuardLogStatement", "PMD.BeanMembersShouldSerialize"})
 public class LoggingInterceptor implements ClientHttpRequestInterceptor {
 
@@ -26,12 +28,12 @@ public class LoggingInterceptor implements ClientHttpRequestInterceptor {
     @Override
     public ClientHttpResponse intercept(
         final HttpRequest req, final byte[] reqBody, final ClientHttpRequestExecution ex) throws IOException {
-        logger.info(LOG, "Request body: " + new String(reqBody, StandardCharsets.UTF_8));
-        logger.info(LOG, "Request URI: " + req.getURI());
+        log.info("Request body: {}", new String(reqBody, StandardCharsets.UTF_8));
+        log.info("Request URI: {}", req.getURI());
         final ClientHttpResponse response = ex.execute(req, reqBody);
         try (InputStreamReader isr = new InputStreamReader(response.getBody(), StandardCharsets.UTF_8)) {
             final String body = new BufferedReader(isr).lines().collect(Collectors.joining("\n"));
-            logger.info(LOG, "Response body: " + body);
+            log.info("Response body: {}", body);
         }
         return response;
     }

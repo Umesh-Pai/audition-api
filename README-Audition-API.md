@@ -33,6 +33,7 @@ OpenAPI Specification can be accessed using the URL http://server:port/context-p
 - Add unit tests for resilience4j CircuitBreaker and Retry
 - Add fallback methods for CircuitBreaker
 - Add unit tests for negative scenarios
+- Add tests for the controller class using WebMvcTest
 
 
 
