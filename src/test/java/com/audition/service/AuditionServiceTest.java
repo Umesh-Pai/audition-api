@@ -22,7 +22,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class AuditionServiceTest {
 
     @InjectMocks
-    private AuditionService service;
+    private AuditionServiceImpl service;
 
     @Mock
     private AuditionIntegrationClient auditionIntegrationClient;

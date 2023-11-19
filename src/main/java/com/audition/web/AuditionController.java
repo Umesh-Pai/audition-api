@@ -32,6 +32,11 @@ public class AuditionController {
         log.info("Request received for posts API");
 
         final List<AuditionPost> posts = auditionService.getPosts();
+
+        if (posts.isEmpty()) {
+            return Page.empty();
+        }
+
         final int totalSize = posts.size();
         final int startIndex = page * size;
         final int endIndex = Math.min(startIndex + size, totalSize);
