@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 import com.audition.integration.AuditionIntegrationClient;
 import com.audition.model.AuditionPost;
 import com.audition.model.Comment;
+import com.audition.service.impl.AuditionServiceImpl;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,8 +1,9 @@
-package com.audition.service;
+package com.audition.service.impl;
 
 import com.audition.integration.AuditionIntegrationClient;
 import com.audition.model.AuditionPost;
 import com.audition.model.Comment;
+import com.audition.service.AuditionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

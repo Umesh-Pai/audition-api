@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 
 import com.audition.model.AuditionPost;
 import com.audition.model.Comment;
-import com.audition.service.AuditionServiceImpl;
+import com.audition.service.AuditionService;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,7 +26,7 @@ class AuditionControllerTest {
     private AuditionController controller;
 
     @Mock
-    private AuditionServiceImpl service;
+    private AuditionService service;
 
     @Test
     void testGetPostsSuccess() {
